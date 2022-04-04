@@ -11,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  var images = {
+    "balloning.png": "Balloning",
+    "hiking.png": "Hiking",
+    "kayaking.png": "Kayaking",
+    "snorkling.png": "Snorkling",
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -43,14 +50,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
             // discover text
             Container(
                 margin: const EdgeInsets.only(left: 20),
                 child: AppLargeText(text: 'Discover')),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             // tabar
             Container(
@@ -129,26 +136,40 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             Container(
               margin: const EdgeInsets.only(left: 20),
-              height: 100,
+              height: 120,
               width: double.maxFinite,
               child: ListView.builder(
                   itemCount: 4,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, index) {
                     return Container(
-                      margin: const EdgeInsets.only(right: 20),
-                      height: 60,
-                      width: 80,
-                      decoration: const BoxDecoration(
-                        color: Colors.amber,
-                        image: DecorationImage(
-                          image: 
-                          AssetImage("assets/img/mountain.jpeg"),
-                              fit: BoxFit.cover  
-                        )
-
+                      margin: const EdgeInsets.only(right: 30),
+                      child: Column(
+                        children: [
+                          Container(
+                            // margin: const EdgeInsets.only(right: 40),
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: AssetImage("assets/img/" +
+                                    images.keys.elementAt(index)),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            child: AppText(
+                                text: images.values.elementAt(index),
+                                color: AppColors.textColor2),
+                          ),
+                        ],
                       ),
-                      child: Center(child: Text('Hi'),),
                     );
                   }),
             ),
