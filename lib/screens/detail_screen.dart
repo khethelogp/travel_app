@@ -3,6 +3,7 @@ import 'package:travel_app/misc/colors.dart';
 import 'package:travel_app/widgets/app_buttons.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
+import 'package:travel_app/widgets/buttons/responsive_button.dart';
 
 class DetailScreen extends StatefulWidget {
   DetailScreen({Key? key}) : super(key: key);
@@ -179,9 +180,31 @@ class _DetailScreenState extends State<DetailScreen> {
                         text:
                             'You must go for a travel, Traveling helps get rid of pressure. Go to the mountains to see nature.',
                         color: AppColors.mainTextColor,
-                      )
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ]),
               )),
+          Positioned(
+              bottom: 20,
+              left: 20,
+              right: 20,
+              child: Row(children: [
+                AppButtons(
+                    size: 60,
+                    color: AppColors.textColor1,
+                    backgroudColor: Colors.white,
+                    borderColor: AppColors.textColor1,
+                    isIcon: true,
+                    icon: Icons.favorite_outline),
+                const SizedBox(
+                  width: 20,
+                ),
+                ResponisveButton(
+                  isResponsive: true,
+                )
+              ]))
         ]),
       ),
     );

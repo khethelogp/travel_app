@@ -46,14 +46,11 @@ class _MainScreenState extends State<MainScreen> {
           showUnselectedLabels: false,
           elevation: 0,
           items: [
+            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.apps)),
             BottomNavigationBarItem(
-                title: Text('Home'), icon: Icon(Icons.apps)),
-            BottomNavigationBarItem(
-                title: Text('Bar'), icon: Icon(Icons.bar_chart_sharp)),
-            BottomNavigationBarItem(
-                title: Text('Search'), icon: Icon(Icons.search)),
-            BottomNavigationBarItem(
-                title: Text('My'), icon: Icon(Icons.person)),
+                label: 'Bar', icon: Icon(Icons.bar_chart_sharp)),
+            BottomNavigationBarItem(label: 'Search', icon: Icon(Icons.search)),
+            BottomNavigationBarItem(label: 'My', icon: Icon(Icons.person)),
           ]),
     );
   }
