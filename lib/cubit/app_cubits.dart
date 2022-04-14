@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/cubit/app_cubit_states.dart';
+import 'package:travel_app/models/data_model.dart';
 import 'package:travel_app/services/data_services.dart';
 
 class AppCubits extends Cubit<CubitStates> {
-  AppCubits({ required this.data }) : super(InitialState()) {
+  AppCubits({required this.data}) : super(InitialState()) {
     emit(WelcomeState());
   }
 
@@ -13,10 +14,16 @@ class AppCubits extends Cubit<CubitStates> {
   void getData() async {
     try {
       emit(LoadingState());
-      places= await data.getInfo();
+      places = await data.getInfo();
       emit(LoadedState(places));
-    } catch(e) {
+    } catch (e) {}
+  }
 
-    }
+  void detailPage(DataModel data) {
+    emit(DetailState(data));
+  }
+
+  void goHome() {
+    emit(LoadedState(places));
   }
 }
